@@ -6,6 +6,7 @@
 		<module>icbms-common</module>
 		<module>icbms-core</module>
 		<module>icbms-web</module>
+		<module>icbms-repository</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -39,6 +40,16 @@
 		<kaptcha.version>0.0.9</kaptcha.version>
 		<jwt.version>0.7.0</jwt.version>
 		<shiro.version>1.3.2</shiro.version>
+		<commons.io.version>2.5</commons.io.version>
+		<commons.codec.version>1.10</commons.codec.version>
+		<commons.configuration.version>1.10</commons.configuration.version>
+		<commons.fileupload.version>1.3.1</commons.fileupload.version>
+		<commons.collection.version>4.4</commons.collection.version>
+		<apache.poi.version>3.16</apache.poi.version>
+		<mina.version>2.0.19</mina.version>
+		<jpush.version>3.3.7</jpush.version>
+		<easypoi.version>3.2.0</easypoi.version>
+		<zxing.version>3.0.0</zxing.version>
 	</properties>
 
 	<!-- 阿里云maven仓库 -->
@@ -101,6 +112,13 @@
 				<version>${fastjson.version}</version>
 			</dependency>
 
+			<!-- apache poi -->
+			<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${apache.poi.version}</version>
+		</dependency>
+
 			<!--&lt;!&ndash; data source and connection &ndash;&gt;
 			<dependency>
 				<groupId>mysql</groupId>
@@ -128,6 +146,12 @@
 				<groupId>org.apache.shiro</groupId>
 				<artifactId>shiro-ehcache</artifactId>
 				<version>${shiro.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>${zxing.version}</version>
 			</dependency>
 
 			<!-- scheduler -->
@@ -245,6 +269,33 @@
 				<version>${jwt.version}</version>
 			</dependency>
 
+			<!-- common utils -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons.fileupload.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons.codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-configuration</groupId>
+				<artifactId>commons-configuration</artifactId>
+				<version>${commons.configuration.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-collections4</artifactId>
+				<version>${commons.collection.version}</version>
+			</dependency>
+
 			<!-- velocity -->
 			<dependency>
 				<artifactId>velocity</artifactId>
@@ -296,7 +347,27 @@
 						<artifactId>commons-collections</artifactId>
 						<groupId>commons-collections</groupId>
 					</exclusion>
+
 				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.afterturn</groupId>
+				<artifactId>easypoi-spring-boot-starter</artifactId>
+				<version>${easypoi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.jpush.api</groupId>
+				<artifactId>jpush-client</artifactId>
+				<version>${jpush.version}</version>
+			</dependency>
+
+			<!-- mina -->
+			<dependency>
+				<groupId>org.apache.mina</groupId>
+				<artifactId>mina-core</artifactId>
+				<version>${mina.version}</version>
 			</dependency>
 
 		</dependencies>
