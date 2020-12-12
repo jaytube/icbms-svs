@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.CodeDao">
+<mapper namespace="com.icbms.repository.dao.sys.CodeDao">
 
-    <resultMap type="com.wz.modules.sys.entity.CodeEntity" id="codeMap">
+    <resultMap type="com.icbms.repository.domain.sys.CodeEntity" id="codeMap">
         <result property="id" column="id"/>
         <result property="mark" column="mark"/>
         <result property="value" column="value"/>
@@ -35,7 +35,7 @@
 		update_time
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.CodeEntity" resultMap="codeMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.CodeEntity" resultMap="codeMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT tc.name FROM sys_code tc WHERE tc.id=sc.parent_id) AS parentName
 		from sys_code sc
@@ -43,14 +43,14 @@
 	</select>
 
 	<!--根据字典标识查询-->
-	<select id="queryByMark" resultType="com.wz.modules.sys.entity.CodeEntity" resultMap="codeMap">
+	<select id="queryByMark" resultType="com.icbms.repository.domain.sys.CodeEntity" resultMap="codeMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT tc.name FROM sys_code tc WHERE tc.id=sc.parent_id) AS parentName
 		from sys_code sc
 		where mark = #{mark}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.CodeEntity" resultMap="codeMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.CodeEntity" resultMap="codeMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_code
@@ -68,14 +68,14 @@
 	</select>
 
 	<!--根据mark获取所有的子字典-->
-	<select id="queryChildsByMark" resultType="com.wz.modules.sys.entity.CodeEntity" resultMap="codeMap">
+	<select id="queryChildsByMark" resultType="com.icbms.repository.domain.sys.CodeEntity" resultMap="codeMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_code
 		WHERE parent_id = (SELECT id FROM sys_code WHERE mark=#{mark})
 	</select>
 
-	<select id="queryListByBean" resultType="com.wz.modules.sys.entity.CodeEntity" resultMap="codeMap">
+	<select id="queryListByBean" resultType="com.icbms.repository.domain.sys.CodeEntity" resultMap="codeMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_code
@@ -101,7 +101,7 @@
 		select count(*) from sys_code
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.CodeEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.CodeEntity">
 		insert into sys_code
 		(
 			`id`, 
@@ -136,7 +136,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.CodeEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.CodeEntity">
 		update sys_code 
 		<set>
 			<if test="mark != null">`mark` = #{mark}, </if>

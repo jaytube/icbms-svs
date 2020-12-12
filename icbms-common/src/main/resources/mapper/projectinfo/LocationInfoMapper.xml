@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.projectinfo.dao.LocationInfoDao">
-	<resultMap type="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+<mapper namespace="com.icbms.repository.dao.projectinfo.LocationInfoDao">
+	<resultMap type="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		id="locationInfoMap">
 		<result property="id" column="id" />
 		<result property="projectId" column="project_id" />
@@ -41,7 +41,7 @@
 	</sql>
 
 	<select id="queryObject"
-		resultType="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+		resultType="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		resultMap="locationInfoMap">
 		select
 		<include refid="Base_Column_List" />
@@ -53,7 +53,7 @@
 
 	<!--根据父位置Id查询位置 -->
 	<select id="queryListParentId"
-		resultType="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+		resultType="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		resultMap="locationInfoMap">
 		select
 		<include refid="Base_Column_List" />
@@ -65,7 +65,7 @@
 	</select>
 
 	<select id="queryList"
-		resultType="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+		resultType="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		resultMap="locationInfoMap">
 		select
 		<include refid="Base_Column_List" />
@@ -82,7 +82,7 @@
 	</select>
 
 	<insert id="save"
-		parameterType="com.wz.modules.projectinfo.entity.LocationInfoEntity">
+		parameterType="com.icbms.repository.domain.projectinfo.LocationInfoEntity">
 		insert into location_info
 		(
 		`id`,
@@ -124,7 +124,7 @@
 	</insert>
 
 	<update id="update"
-		parameterType="com.wz.modules.projectinfo.entity.LocationInfoEntity">
+		parameterType="com.icbms.repository.domain.projectinfo.LocationInfoEntity">
 		update location_info
 		<set>
 			<if test="parentId != null">
@@ -210,7 +210,7 @@
 	</delete>
 
 	<select id="findLocInfoByPId"
-		resultType="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+		resultType="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		resultMap="locationInfoMap">
 		select
 		<include refid="Base_Column_List" />
@@ -221,7 +221,7 @@
 	
 	
 	<select id="findProjectLocationRel"
-		resultType="com.wz.modules.projectinfo.entity.LocationInfoEntity"
+		resultType="com.icbms.repository.domain.projectinfo.LocationInfoEntity"
 		resultMap="locationInfoMap">
 		select
 			a.id,

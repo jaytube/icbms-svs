@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.projectinfo.dao.ProjectRoleDao">
+<mapper namespace="com.icbms.repository.dao.projectinfo.ProjectRoleDao">
 
 
-	<resultMap type="com.wz.modules.projectinfo.entity.ProjectRoleEntity"
+	<resultMap type="com.icbms.repository.domain.projectinfo.ProjectRoleEntity"
 		id="projectRoleMap">
 		<result property="projectId" column="project_id" />
 		<result property="roleId" column="role_id" />
@@ -15,7 +15,7 @@
 		role_id
 	</sql>
 
-	<select id="queryObject" resultType="com.wz.modules.projectinfo.entity.ProjectRoleEntity"
+	<select id="queryObject" resultType="com.icbms.repository.domain.projectinfo.ProjectRoleEntity"
 		resultMap="projectRoleMap">
 		select
 		<include refid="Base_Column_List" />
@@ -23,7 +23,7 @@
 		where project_id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.projectinfo.entity.ProjectRoleEntity"
+	<select id="queryList" resultType="com.icbms.repository.domain.projectinfo.ProjectRoleEntity"
 		resultMap="projectRoleMap">
 		select
 		<include refid="Base_Column_List" />
@@ -41,7 +41,7 @@
 		</if>
 	</select>
 
-	<select id="queryListByBean" resultType="com.wz.modules.projectinfo.entity.ProjectRoleEntity"
+	<select id="queryListByBean" resultType="com.icbms.repository.domain.projectinfo.ProjectRoleEntity"
 		resultMap="projectRoleMap">
 		select
 		<include refid="Base_Column_List" />
@@ -54,7 +54,7 @@
 		project_role
 	</select>
 
-	<insert id="save" parameterType="com.wz.modules.projectinfo.entity.ProjectRoleEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.projectinfo.ProjectRoleEntity">
 		insert into project_role
 		(
 		`project_id`,
@@ -69,7 +69,7 @@
 		</foreach>
 	</insert>
 
-	<update id="update" parameterType="com.wz.modules.projectinfo.entity.ProjectRoleEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.projectinfo.ProjectRoleEntity">
 		update project_role
 		<set>
 			<if test="roleId != null">`role_id` = #{roleId}</if>

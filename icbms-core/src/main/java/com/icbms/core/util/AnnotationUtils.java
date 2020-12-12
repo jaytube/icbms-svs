@@ -1,7 +1,7 @@
 package com.icbms.core.util;
 
 import com.icbms.common.exception.MyException;
-import com.icbms.core.annotation.ActField;
+import com.icbms.repository.annotation.ActField;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.FatalBeanException;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.app.dao.ApiUserDao">
+<mapper namespace="com.icbms.repository.dao.app.ApiUserDao">
 
 	<!--根据id获取用户相关信息-->
-	<select id="userInfo" resultType="com.wz.modules.app.entity.ApiUserEntity">
+	<select id="userInfo" resultType="com.icbms.repository.domain.app.ApiUserEntity">
 		select
 		id,
 		bapid,

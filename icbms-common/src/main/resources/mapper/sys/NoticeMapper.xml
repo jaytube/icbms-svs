@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.NoticeDao">
+<mapper namespace="com.icbms.repository.dao.sys.NoticeDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.NoticeEntity" id="noticeMap">
+    <resultMap type="com.icbms.repository.domain.sys.NoticeEntity" id="noticeMap">
         <result property="id" column="id"/>
         <result property="context" column="context"/>
         <result property="title" column="title"/>
@@ -34,14 +34,14 @@
 		n.remark
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.NoticeEntity" resultMap="noticeMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.NoticeEntity" resultMap="noticeMap">
 		select
 		<include refid="Base_Column_List" />,nu.user_id AS userId
 		from sys_notice n LEFT JOIN sys_notice_user nu ON n.id=nu.notice_id
 		where n.id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.NoticeEntity" resultMap="noticeMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.NoticeEntity" resultMap="noticeMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_notice
@@ -58,7 +58,7 @@
 		</if>
 	</select>
 
-    <select id="queryListByBean" resultType="com.wz.modules.sys.entity.NoticeEntity" resultMap="noticeMap">
+    <select id="queryListByBean" resultType="com.icbms.repository.domain.sys.NoticeEntity" resultMap="noticeMap">
         select
         <include refid="Base_Column_List" />,u.user_name AS userName,nu.status AS showStatus,
 		(select user_name FROM sys_user a where a.id=n.create_id) AS createName
@@ -78,7 +78,7 @@
     </select>
 
 	<!--我的通知列表-->
-	<select id="findMyNotice" resultType="com.wz.modules.sys.entity.NoticeEntity" resultMap="noticeMap">
+	<select id="findMyNotice" resultType="com.icbms.repository.domain.sys.NoticeEntity" resultMap="noticeMap">
 		select
 		<include refid="Base_Column_List" />,u.user_name AS userName,nu.status AS showStatus,
 		(select user_name FROM sys_user a where a.id=n.create_id) AS createName
@@ -101,7 +101,7 @@
 		select count(*) from sys_notice
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.NoticeEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.NoticeEntity">
 		insert into sys_notice
 		(
 			`id`, 
@@ -134,7 +134,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.NoticeEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.NoticeEntity">
 		update sys_notice 
 		<set>
 			<if test="context != null">`context` = #{context}, </if>

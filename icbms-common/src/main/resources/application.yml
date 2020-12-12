@@ -11,7 +11,7 @@ server:
 spring:
   # 环境 dev|test|pro
   profiles:
-    active: dev #部署生产换成pro,开发dev
+    active: local #部署生产换成pro,开发local,连接dev2020数据库
 
   http:
     multipart:

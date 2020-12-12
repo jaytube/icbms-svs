@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.NoticeUserDao">
+<mapper namespace="com.icbms.repository.dao.sys.NoticeUserDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.NoticeUserEntity" id="noticeUserMap">
+    <resultMap type="com.icbms.repository.domain.sys.NoticeUserEntity" id="noticeUserMap">
         <result property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="noticeId" column="notice_id"/>
@@ -20,14 +20,14 @@
 		remark
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.NoticeUserEntity" resultMap="noticeUserMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.NoticeUserEntity" resultMap="noticeUserMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_notice_user
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.NoticeUserEntity" resultMap="noticeUserMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.NoticeUserEntity" resultMap="noticeUserMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_notice_user
@@ -44,7 +44,7 @@
 		</if>
 	</select>
 
-    <select id="queryListByBean" resultType="com.wz.modules.sys.entity.NoticeUserEntity" resultMap="noticeUserMap">
+    <select id="queryListByBean" resultType="com.icbms.repository.domain.sys.NoticeUserEntity" resultMap="noticeUserMap">
         select
         <include refid="Base_Column_List" />
         from sys_notice_user
@@ -55,7 +55,7 @@
 		select count(*) from sys_notice_user
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.NoticeUserEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.NoticeUserEntity">
 		insert into sys_notice_user
 		(
 			`id`, 
@@ -74,7 +74,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.NoticeUserEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.NoticeUserEntity">
 		update sys_notice_user 
 		<set>
 			<if test="userId != null">`user_id` = #{userId}, </if>
@@ -85,7 +85,7 @@
 		where id = #{id}
 	</update>
 
-	<update id="updateByNoticeIdUserId" parameterType="com.wz.modules.sys.entity.NoticeUserEntity">
+	<update id="updateByNoticeIdUserId" parameterType="com.icbms.repository.domain.sys.NoticeUserEntity">
 		update sys_notice_user
 		<set>
 			<if test="status != null">`status` = #{status}, </if>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.report.dao.AlarmInfoReportDao">
+<mapper namespace="com.icbms.repository.dao.report.AlarmInfoReportDao">
 
 
-    <resultMap type="com.wz.modules.report.entity.AlarmInfoReportEntity" id="deviceAlarmInfoLogMap">
+    <resultMap type="com.icbms.repository.domain.report.AlarmInfoReportEntity" id="deviceAlarmInfoLogMap">
         <result property="id" column="id"/>
         <result property="projectId" column="project_id"/>
         <result property="deviceBoxMac" column="device_box_mac"/>
@@ -41,14 +41,14 @@
 		remark
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.report.entity.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.report.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
 		select
 		<include refid="Base_Column_List" />
 		from device_alarm_info_log
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.report.entity.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.report.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
 		select
 			d.id,
 			d.project_id,
@@ -96,7 +96,7 @@
 		</if>
 	</select>
 
-    <select id="queryListByBean" resultType="com.wz.modules.report.entity.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
+    <select id="queryListByBean" resultType="com.icbms.repository.domain.report.AlarmInfoReportEntity" resultMap="deviceAlarmInfoLogMap">
         select
         <include refid="Base_Column_List" />
         from device_alarm_info_log
@@ -121,7 +121,7 @@
 		</if>
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.report.entity.AlarmInfoReportEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.report.AlarmInfoReportEntity">
 		insert into device_alarm_info_log
 		(
 			`id`, 
@@ -161,7 +161,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.report.entity.AlarmInfoReportEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.report.AlarmInfoReportEntity">
 		update device_alarm_info_log 
 		<set>
 			<if test="projectId != null">`project_id` = #{projectId}, </if>

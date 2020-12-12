@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.deviceinfo.dao.DeviceSwitchInfoDao">
+<mapper namespace="com.icbms.repository.dao.deviceinfo.DeviceSwitchInfoDao">
 
 
-    <resultMap type="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity" id="deviceSwitchInfoMap">
+    <resultMap type="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity" id="deviceSwitchInfoMap">
         <result property="id" column="id"/>
         <result property="projectId" column="project_id"/>
         <result property="locationId" column="location_id"/>
@@ -44,14 +44,14 @@
 		remark
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
 		select
 		<include refid="Base_Column_List" />
 		from device_switch_info
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT project_name FROM project_info p WHERE p.id=s.project_id) AS projectName,
 		(SELECT concat(concat_ws(":","楼栋",l.building_num),concat_ws(":","房间号:",l.room_num),concat_ws(":","具体位置",l.position_dtl)) FROM location_info l WHERE l.id=s.location_id) AS locationName,
@@ -70,7 +70,7 @@
 		</if>
 	</select>
 
-    <select id="queryListByBean" resultType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
+    <select id="queryListByBean" resultType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity" resultMap="deviceSwitchInfoMap">
         select
         <include refid="Base_Column_List" />
         from device_switch_info
@@ -81,7 +81,7 @@
 		select count(*) from device_switch_info
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity">
 		insert into device_switch_info
 		(
 			`id`, 
@@ -124,7 +124,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity">
 		update device_switch_info 
 		<set>
 			<if test="projectId != null">`project_id` = #{projectId}, </if>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActNodesetDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActNodesetDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActNodesetEntity" id="extendActNodesetMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActNodesetEntity" id="extendActNodesetMap">
         <result property="id" column="id"/>
         <result property="modelId" column="model_id"/>
         <result property="defid" column="defid"/>
@@ -26,21 +26,21 @@
 		call_back
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeset
 		where id = #{value}
 	</select>
 	<!--根据nodeId查询节点信息-->
-	<select id="queryByNodeId" resultType="com.wz.modules.activiti.entity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
+	<select id="queryByNodeId" resultType="com.icbms.repository.domain.activity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeset
 		where node_id = #{nodeId}
 	</select>
 	<!--根据nodeId和modelId查询节点信息-->
-	<select id="queryByNodeIdModelId" resultType="com.wz.modules.activiti.entity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
+	<select id="queryByNodeIdModelId" resultType="com.icbms.repository.domain.activity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeset
@@ -48,7 +48,7 @@
 	</select>
 
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActNodesetEntity" resultMap="extendActNodesetMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeset
@@ -69,7 +69,7 @@
 		select count(*) from extend_act_nodeset
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActNodesetEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActNodesetEntity">
 		insert into extend_act_nodeset
 		(
 			`id`, 
@@ -94,7 +94,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActNodesetEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActNodesetEntity">
 		update extend_act_nodeset 
 		<set>
 			<if test="modelId != null">`model_id` = #{modelId}, </if>

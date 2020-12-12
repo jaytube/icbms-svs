@@ -1,4 +1,4 @@
-package com.icbms.core.annotation;
+package com.icbms.repository.annotation;
 
 import java.lang.annotation.*;
 

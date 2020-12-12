@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.UserDao">
+<mapper namespace="com.icbms.repository.dao.sys.UserDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.UserEntity" id="userMap">
+    <resultMap type="com.icbms.repository.domain.sys.UserEntity" id="userMap">
         <result property="id" column="id"/>
         <result property="bapid" column="bapid"/>
         <result property="baid" column="baid"/>
@@ -25,7 +25,7 @@
     </resultMap>
     
     
-    <resultMap type="com.wz.modules.sys.entity.RoleEntity" id="roleUserMap">
+    <resultMap type="com.icbms.repository.domain.sys.RoleEntity" id="roleUserMap">
 		<result property="id" column="id" />
 		<result property="name" column="name" />
 		<result property="code" column="code" />
@@ -33,7 +33,7 @@
 		<result property="roleType" column="role_type" />
 		<result property="remark" column="remark" />
 
-		<collection property="userList" ofType="com.wz.modules.sys.entity.UserEntity">
+		<collection property="userList" ofType="com.icbms.repository.domain.sys.UserEntity">
 			<result property="id" column="user_id" />
 			<result property="bapid" column="user_bapid" />
 			<result property="userName" column="user_name" />
@@ -62,14 +62,14 @@
 		projectIds
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.UserEntity" resultMap="userMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.UserEntity" resultMap="userMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT name FROM sys_organ o WHERE o.id=s.baid) AS baName
 		from sys_user s
 		where id = #{value}
 	</select>
 	
-	<select id="queryUserProjectRel" resultType="com.wz.modules.sys.entity.UserEntity" resultMap="userMap">
+	<select id="queryUserProjectRel" resultType="com.icbms.repository.domain.sys.UserEntity" resultMap="userMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_user s
@@ -79,7 +79,7 @@
 		</if>
 	</select>
 	
-	<select id="queryObjectByRole" resultType="com.wz.modules.sys.entity.UserEntity" resultMap="userMap">
+	<select id="queryObjectByRole" resultType="com.icbms.repository.domain.sys.UserEntity" resultMap="userMap">
 		select
 			s.id, 
 			s.bapid,
@@ -103,7 +103,7 @@
 	</select>
 	
 	<!--根据登陆用户查询有效的用户-->
-	<select id="queryByLoginName" resultType="com.wz.modules.sys.entity.UserEntity" resultMap="userMap">
+	<select id="queryByLoginName" resultType="com.icbms.repository.domain.sys.UserEntity" resultMap="userMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT name FROM sys_organ o WHERE o.id=u.baid) AS baName,
 		(SELECT name FROM sys_organ o WHERE o.id=u.bapid) AS bapName
@@ -132,7 +132,7 @@
 		where ur.user_id=#{userId} AND o.type=#{type} AND r.status = '0'
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.UserEntity" resultMap="userMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.UserEntity" resultMap="userMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT name FROM sys_organ o WHERE o.id=s.baid) AS baName,
 		(SELECT name FROM sys_organ o WHERE o.id=s.bapid) AS bapName
@@ -157,7 +157,7 @@
 		</if>
 	</select>
 
-	<select id="queryListByBean" resultType="com.wz.modules.sys.entity.UserWindowDto">
+	<select id="queryListByBean" resultType="com.icbms.common.dto.UserWindowDto">
 		select
 			id,user_name AS name,bapid
 		from sys_user
@@ -174,7 +174,7 @@
 		select count(*) from sys_user
 	</select>
 	 
-	<insert id="save"  parameterType="com.wz.modules.sys.entity.UserEntity">
+	<insert id="save"  parameterType="com.icbms.repository.domain.sys.UserEntity">
 		insert into sys_user
 		(
 			`id`, 
@@ -217,7 +217,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.UserEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.UserEntity">
 		update sys_user 
 		<set>
 			<if test="bapid != null">`bapid` = #{bapid}, </if>

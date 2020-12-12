@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActNodeuserDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActNodeuserDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActNodeuserEntity" id="extendActNodeuserMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActNodeuserEntity" id="extendActNodeuserMap">
         <result property="id" column="id"/>
         <result property="nodeId" column="node_id"/>
         <result property="userType" column="user_type"/>
@@ -16,14 +16,14 @@
 		user_type
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeuser
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodeuser
@@ -41,7 +41,7 @@
 	</select>
 
 	<!--根据节点获取节点审批人员信息-->
-	<select id="getNodeUserByNodeId" resultType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
+	<select id="getNodeUserByNodeId" resultType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity" resultMap="extendActNodeuserMap">
 		select
 		<include refid="Base_Column_List" />,
 		(CASE WHEN user_type='1' THEN (SELECT user_name FROM sys_user u WHERE an.ID = u.ID)
@@ -57,7 +57,7 @@
 		select count(*) from extend_act_nodeuser
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity">
 		insert into extend_act_nodeuser
 		(
 			`id`, 
@@ -72,7 +72,7 @@
 		)
 	</insert>
 
-	<insert id="saveBatch" parameterType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity">
+	<insert id="saveBatch" parameterType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity">
 		insert into extend_act_nodeuser
 		(
 			`id`,
@@ -86,7 +86,7 @@
 
 	</insert>
 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity">
 		update extend_act_nodeuser 
 		<set>
 			<if test="nodeId != null">`node_id` = #{nodeId}, </if>

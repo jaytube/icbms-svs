@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.devicelog.dao.DeviceSwitchInfoLogDao">
-	<resultMap type="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity"
+<mapper namespace="com.icbms.repository.dao.devicelog.DeviceSwitchInfoLogDao">
+	<resultMap type="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity"
 		id="deviceSwitchInfoLogMap">
 		<result property="id" column="id" />
 		<result property="projectId" column="project_id" />
@@ -48,7 +48,7 @@
 	</sql>
 
 	<select id="queryObject"
-		resultType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity"
 		resultMap="deviceSwitchInfoLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -57,7 +57,7 @@
 	</select>
 
 	<select id="queryList"
-		resultType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity"
 		resultMap="deviceSwitchInfoLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -76,7 +76,7 @@
 	</select>
 
 	<select id="queryListByBean"
-		resultType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity"
 		resultMap="deviceSwitchInfoLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -90,7 +90,7 @@
 	</select>
 
 	<insert id="save"
-		parameterType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity">
+		parameterType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity">
 		insert into device_switch_info_log
 		(
 		`id`,
@@ -143,7 +143,7 @@
 	</delete>
 
 	<update id="update"
-		parameterType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity">
+		parameterType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity">
 		update device_switch_info_log
 		<set>
 			<if test="projectId != null">`project_id` = #{projectId}, </if>
@@ -179,7 +179,7 @@
 	</delete>
 
 	<select id="queryAppList"
-		resultType="com.wz.modules.devicelog.entity.DeviceSwitchInfoLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceSwitchInfoLogEntity"
 		resultMap="deviceSwitchInfoLogMap">
 		select
 		<include refid="Base_Column_List" />

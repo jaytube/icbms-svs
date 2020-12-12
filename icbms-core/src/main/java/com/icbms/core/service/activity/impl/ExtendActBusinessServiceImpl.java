@@ -4,7 +4,7 @@ import com.icbms.common.constant.Constant;
 import com.icbms.common.exception.MyException;
 import com.icbms.common.util.StringUtils;
 import com.icbms.common.util.Utils;
-import com.icbms.core.annotation.ActField;
+import com.icbms.repository.annotation.ActField;
 import com.icbms.core.service.activity.ExtendActBusinessService;
 import com.icbms.core.util.AnnotationUtils;
 import com.icbms.core.util.UserUtils;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActTasklogDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActTasklogDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActTasklogEntity" id="extendActTasklogMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActTasklogEntity" id="extendActTasklogMap">
         <result property="id" column="id"/>
         <result property="busId" column="bus_id"/>
         <result property="defId" column="def_id"/>
@@ -40,7 +40,7 @@
 		columns
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActTasklogEntity" resultMap="extendActTasklogMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActTasklogEntity" resultMap="extendActTasklogMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT user_name FROM sys_user s WHERE s.id=t.advance_id) AS advanceName,
 		(SELECT user_name FROM sys_user s WHERE s.id=t.deal_id) AS dealName
@@ -48,7 +48,7 @@
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActTasklogEntity" resultMap="extendActTasklogMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActTasklogEntity" resultMap="extendActTasklogMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT user_name FROM sys_user s WHERE s.id=t.advance_id) AS advanceName,
 		(SELECT user_name FROM sys_user s WHERE s.id=t.deal_id) AS dealName
@@ -64,7 +64,7 @@
 		select count(*) from extend_act_tasklog
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActTasklogEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActTasklogEntity">
 		insert into extend_act_tasklog
 		(
 			`id`, 
@@ -103,7 +103,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActTasklogEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActTasklogEntity">
 		update extend_act_tasklog 
 		<set>
 			<if test="busId != null">`bus_id` = #{busId}, </if>
@@ -124,7 +124,7 @@
 		where id = #{id}
 	</update>
 
-	<update id="updateByTaskId" parameterType="com.wz.modules.activiti.entity.ExtendActTasklogEntity">
+	<update id="updateByTaskId" parameterType="com.icbms.repository.domain.activity.ExtendActTasklogEntity">
 		update extend_act_tasklog
 		<set>
 			<if test="busId != null">`bus_id` = #{busId}, </if>
@@ -144,7 +144,7 @@
 	</update>
 
 	<!--转办任务时更新任务日志，有可能会存在多次转办，就会产生多条任务日志，所有这里用 taskId+appOpinion为空 作唯一-->
-	<update id="updateByTaskIdOpinion" parameterType="com.wz.modules.activiti.entity.ExtendActTasklogEntity">
+	<update id="updateByTaskIdOpinion" parameterType="com.icbms.repository.domain.activity.ExtendActTasklogEntity">
 		update extend_act_tasklog
 		<set>
 			<if test="busId != null">`bus_id` = #{busId}, </if>

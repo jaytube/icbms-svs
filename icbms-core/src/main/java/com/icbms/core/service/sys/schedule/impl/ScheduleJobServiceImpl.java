@@ -10,10 +10,16 @@ import com.icbms.repository.domain.sys.schedule.ScheduleJobEntity;
 import org.quartz.CronTrigger;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +31,9 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
     private Scheduler scheduler;
     @Autowired
     private ScheduleJobDao schedulerJobDao;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     /**
      * 项目启动时，初始化定时器
@@ -41,6 +50,23 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
                 ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
             }
         }
+    }
+
+    private static Object getObjectFromBlob(ResultSet rs, String colName)
+            throws ClassNotFoundException, IOException, SQLException {
+
+        Object obj = null;
+        InputStream binaryInput = rs.getBinaryStream(colName);
+        if (binaryInput != null) {
+            ObjectInputStream in = new ObjectInputStream(binaryInput);
+            try {
+                obj = in.readObject();
+            } finally {
+                in.close();
+            }
+        }
+
+        return obj;
     }
 
     @Override

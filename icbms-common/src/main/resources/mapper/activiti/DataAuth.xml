@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.wz.base.dao">
+<mapper namespace="com.icbms.repository.dao">
     <!-- 数据权限公共控制类 -->
     <sql id="DataAuth">
         AND (

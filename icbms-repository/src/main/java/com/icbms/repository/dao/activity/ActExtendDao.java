@@ -14,7 +14,8 @@ import java.util.Map;
  * @Date 2017/7/31
  */
 @Mapper
-public interface ActExtendDao {
+public interface
+ActExtendDao {
     /**
      * 根据流程key 获取业务可用的流程
      * @param actKey

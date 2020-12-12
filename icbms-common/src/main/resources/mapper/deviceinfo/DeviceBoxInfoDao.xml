@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.deviceinfo.dao.DeviceBoxInfoDao">
-	<resultMap type="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity"
+<mapper namespace="com.icbms.repository.dao.deviceinfo.DeviceBoxInfoDao">
+	<resultMap type="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity"
 		id="deviceBoxInfoMap">
 		<result property="id" column="id" />
 		<result property="projectId" column="project_id" />
@@ -29,7 +29,7 @@
 		<result property="placedFlag" column="placed_flag" />
 
 		<association property="alarm"
-			javaType="com.wz.modules.devicelog.entity.DeviceAlarmInfoLogEntity">
+			javaType="com.icbms.repository.domain.devicelog.DeviceAlarmInfoLogEntity">
 			<id column="alarmId" property="id" />
 			<result property="node" column="node" />
 			<result property="type" column="type" />
@@ -63,7 +63,7 @@
 	</sql>
 
 	<select id="queryObject"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		select
 		d.id,
 		d.project_id,
@@ -97,7 +97,7 @@
 	</select>
 
 	<select id="queryByMac"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		select
 		d.id,
 		d.project_id,
@@ -133,7 +133,7 @@
 	</select>
 
 	<select id="queryProjectMac"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		select
 		d.id,
 		d.project_id,
@@ -168,7 +168,7 @@
 	</select>
 	
 	<select id="queryProjectDeviceBox"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 			select
 				d.id,
 				d.project_id,
@@ -193,7 +193,7 @@
 	</select>
 	
 	<select id="queryList"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity"
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity"
 		resultMap="deviceBoxInfoMap">
 		select
 		<include refid="Base_Column_List" />,
@@ -264,7 +264,7 @@
 	</select>
 
 	<select id="queryListByBean"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity"
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity"
 		resultMap="deviceBoxInfoMap">
 		select
 		<include refid="Base_Column_List" />
@@ -297,7 +297,7 @@
 	</select>
 
 	<insert id="save"
-		parameterType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		parameterType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		insert into device_box_info
 		(
 		`id`,
@@ -336,7 +336,7 @@
 		)
 	</insert>
 	
-	<insert id="saveBoxLocLink" parameterType="com.wz.modules.projectinfo.entity.DboxLocLinkEntity">
+	<insert id="saveBoxLocLink" parameterType="com.icbms.repository.domain.projectinfo.DboxLocLinkEntity">
 		insert into
 		device_box_location
 		(
@@ -360,7 +360,7 @@
 		)
 	</insert>
 
-	<select id="queryLinkListByBoxId" resultType="com.wz.modules.projectinfo.entity.DboxLocLinkEntity"
+	<select id="queryLinkListByBoxId" resultType="com.icbms.repository.domain.projectinfo.DboxLocLinkEntity"
 		parameterType="java.util.Map">
 		select
 		id,
@@ -377,7 +377,7 @@
 	</select>
 
 	<update id="update"
-		parameterType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		parameterType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		update device_box_info
 		<set>
 			<if test="projectId != null">`project_id` = #{projectId}, </if>
@@ -401,7 +401,7 @@
 	</update>
 
 	<update id="xyReset"
-		parameterType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity">
+		parameterType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity">
 		update device_box_info
 		<set>
 			`fx` = null,
@@ -411,7 +411,7 @@
 	</update>
 
 
-	<update id="updateBoxLocLink" parameterType="com.wz.modules.projectinfo.entity.DboxLocLinkEntity">
+	<update id="updateBoxLocLink" parameterType="com.icbms.repository.domain.projectinfo.DboxLocLinkEntity">
 		update device_box_location
 		<set>
 			<if test="dboxLocation.locationInfo.id != null">`location_id` = #{dboxLocation.locationInfo.id}, </if>
@@ -480,7 +480,7 @@
 	</select>
 
 	<select id="findDeviceBoxsInfoByLId"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity"
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity"
 		resultMap="deviceBoxInfoMap">
 		select
 		d.id,
@@ -550,7 +550,7 @@
 	</update>
 
 	<select id="queryListByMac"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceBoxInfoEntity"
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceBoxInfoEntity"
 		parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
@@ -563,7 +563,7 @@
 
 
 	<select id="findDeviceBoxsInfoLike"
-		resultType="com.wz.modules.deviceinfo.entity.DeviceSwitchInfoEntity"
+		resultType="com.icbms.repository.domain.deviceinfo.DeviceSwitchInfoEntity"
 		resultMap="deviceBoxInfoMap">
 		select
 		<include refid="Base_Column_List" />

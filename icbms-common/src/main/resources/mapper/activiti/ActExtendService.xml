@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ActExtendDao">
+<mapper namespace="com.icbms.repository.dao.activity.ActExtendDao">
 	<!--根据流程key 获取业务可用的流程-->
 	<select id="queryFlowsByActKey" resultType="java.util.Map">
 		select
@@ -20,7 +20,7 @@
 		)
 	</select>
 	<!--根据节点id分页查询可以选择的审批人-->
-	<select id="userWindowPage" resultType="com.wz.modules.sys.entity.UserEntity">
+	<select id="userWindowPage" resultType="com.icbms.repository.domain.sys.UserEntity">
 		SELECT
 			DISTINCT user_name,u.id,
 			(SELECT name FROM sys_organ o WHERE o.id=u.bapid) AS bapName,
@@ -38,7 +38,7 @@
 	</select>
 
 	<!--转办变更人选择-->
-	<select id="turnWindowList" resultType="com.wz.modules.sys.entity.UserEntity">
+	<select id="turnWindowList" resultType="com.icbms.repository.domain.sys.UserEntity">
 		SELECT
 		user_name,id,
 		(SELECT name FROM sys_organ o WHERE o.id=u.bapid) AS bapName,
@@ -87,7 +87,7 @@
 	</update>
 
 	<!--我的待办列表-->
-	<select id="findMyUpcomingPage" resultType="com.wz.modules.activiti.dto.ProcessTaskDto">
+	<select id="findMyUpcomingPage" resultType="com.icbms.common.dto.ProcessTaskDto">
 		select  a.name_ AS taskName,a.CREATE_TIME_ AS createTime, a.id_ AS taskId,  a.proc_inst_id_ AS instanceId,fb.defid AS defId,
 			fb.code,fb.act_key AS actKey,fb.bus_id AS busId,
 			(SELECT name FROM extend_act_business ab WHERE fb.act_key=ab.act_key ) AS busName,
@@ -109,7 +109,7 @@
 	</select>
 
 	<!--我的已办列表-->
-	<select id="findMyDoneList" resultType="com.wz.modules.activiti.dto.ProcessTaskDto">
+	<select id="findMyDoneList" resultType="com.icbms.common.dto.ProcessTaskDto">
 		select  a.create_time,a.deal_time,a.bus_id AS busId,a.def_id AS defId,a.instance_id AS instanceId,a.task_id AS taskId,
 		a.task_name AS taskName,a.app_opinion AS remark,fb.code,fb.status AS status,fb.act_key,
 		(SELECT name FROM extend_act_business ab WHERE fb.act_key=ab.act_key ) AS busName,

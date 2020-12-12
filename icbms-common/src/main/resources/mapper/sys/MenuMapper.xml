@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.MenuDao">
+<mapper namespace="com.icbms.repository.dao.sys.MenuDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.MenuEntity" id="menuMap">
+    <resultMap type="com.icbms.repository.domain.sys.MenuEntity" id="menuMap">
         <result property="id" column="id"/>
         <result property="parentId" column="parent_id"/>
         <result property="parentIds" column="parent_ids"/>
@@ -42,7 +42,7 @@
 		type
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.MenuEntity" resultMap="menuMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.MenuEntity" resultMap="menuMap">
 		select
 		<include refid="Base_Column_List"  />,(SELECT tm.name FROM sys_menu tm WHERE tm.id=m.parent_id ) AS parentName
 		from sys_menu m
@@ -50,7 +50,7 @@
 	</select>
 
 	<!--根据父菜单Id查询菜单-->
-	<select id="queryListParentId" resultType="com.wz.modules.sys.entity.MenuEntity" resultMap="menuMap">
+	<select id="queryListParentId" resultType="com.icbms.repository.domain.sys.MenuEntity" resultMap="menuMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT tm.name FROM sys_menu tm WHERE tm.id=m.parent_id ) AS parentName
 		from sys_menu m
@@ -58,7 +58,7 @@
 	</select>
 
 	<!--根据登陆用户Id,查询出所有授权菜单-->
-	<select id="queryByUserId" resultType="com.wz.modules.sys.entity.MenuEntity" resultMap="menuMap">
+	<select id="queryByUserId" resultType="com.icbms.repository.domain.sys.MenuEntity" resultMap="menuMap">
 		select DISTINCT
 		m.*,(SELECT tm.name FROM sys_menu tm WHERE tm.id=m.parent_id ) AS parentName
 		FROM sys_user_role ur LEFT JOIN
@@ -69,7 +69,7 @@
 	</select>
 
 	<!--查询所有不包括按钮 的菜单-->
-	<select id="queryNotButtonnList" resultType="com.wz.modules.sys.entity.MenuEntity" resultMap="menuMap">
+	<select id="queryNotButtonnList" resultType="com.icbms.repository.domain.sys.MenuEntity" resultMap="menuMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT tm.name FROM sys_menu tm WHERE tm.id=m.parent_id ) AS parentName
 		FROM sys_menu m
@@ -79,7 +79,7 @@
 		</foreach>
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.MenuEntity" resultMap="menuMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.MenuEntity" resultMap="menuMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT tm.name FROM sys_menu tm WHERE tm.id=m.parent_id ) AS parentName
 		from sys_menu m
@@ -90,7 +90,7 @@
 		select count(*) from sys_menu
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.MenuEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.MenuEntity">
 		insert into sys_menu
 		(
 			`id`, 
@@ -131,7 +131,7 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.wz.modules.sys.entity.MenuEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.MenuEntity">
 		update sys_menu
 		<set>
 			<if test="parentId != null">

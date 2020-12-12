@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActBusinessDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActBusinessDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActBusinessEntity" id="extendActBusinessMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActBusinessEntity" id="extendActBusinessMap">
         <result property="id" column="id"/>
         <result property="bapid" column="bapid"/>
         <result property="baid" column="baid"/>
@@ -40,7 +40,7 @@
 		update_time
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT name FROM extend_act_business b WHERE b.id=a.parent_id) AS parentName
 		from extend_act_business a
@@ -48,21 +48,21 @@
 	</select>
 
 	<!--根据流程key查询-->
-	<select id="queryByActKey" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryByActKey" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_business
 		where act_key = #{value}
 	</select>
 
-	<select id="queryBusTree" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryBusTree" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_business
 		where type = #{type1} OR type = #{type2}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_business
@@ -80,7 +80,7 @@
 	</select>
 
 	<!--根据extend_act_model中的modelid查询对应业务-->
-	<select id="queryActBusByModelId" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryActBusByModelId" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 			b.id AS id,b.classurl AS classurl
 		from extend_act_model m LEFT JOIN extend_act_business b ON m.extend_act_business_id=b.id
@@ -96,7 +96,7 @@
 
 	</select>
 
-	<select id="queryListByBean" resultType="com.wz.modules.activiti.entity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
+	<select id="queryListByBean" resultType="com.icbms.repository.domain.activity.ExtendActBusinessEntity" resultMap="extendActBusinessMap">
 		select
 		<include refid="Base_Column_List" />,(SELECT name FROM extend_act_business b WHERE b.id=a.parent_id) AS parentName
 		from extend_act_business a
@@ -113,7 +113,7 @@
 		select count(*) from extend_act_business
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActBusinessEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActBusinessEntity">
 		insert into extend_act_business
 		(
 			`id`, 
@@ -152,7 +152,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActBusinessEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActBusinessEntity">
 		update extend_act_business 
 		<set>
 			<if test="actKey != null">`act_key` = #{actKey}, </if>

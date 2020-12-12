@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.RoleMenuDao">
+<mapper namespace="com.icbms.repository.dao.sys.RoleMenuDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.RoleMenuEntity" id="roleMenuMap">
+    <resultMap type="com.icbms.repository.domain.sys.RoleMenuEntity" id="roleMenuMap">
         <result property="roleId" column="role_id"/>
         <result property="menuId" column="menu_id"/>
     </resultMap>
@@ -21,7 +21,7 @@
 		from sys_role_menu WHERE role_id=#{roleId}
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.RoleMenuEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.RoleMenuEntity">
 		insert into sys_role_menu
 		(
 			`role_id`, 

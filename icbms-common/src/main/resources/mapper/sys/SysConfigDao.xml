@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
-<mapper namespace="com.wz.modules.sys.dao.SysConfigDao">
-	<select id="queryObject" resultType="com.wz.modules.oss.entity.SysConfigEntity">
+<mapper namespace="com.icbms.repository.dao.sys.SysConfigDao">
+	<select id="queryObject" resultType="com.icbms.repository.domain.oss.SysConfigEntity">
 		select * from sys_config where id = #{id}
 	</select>
 	
-	<select id="queryList" parameterType="map" resultType="com.wz.modules.oss.entity.SysConfigEntity">
+	<select id="queryList" parameterType="map" resultType="com.icbms.repository.domain.oss.SysConfigEntity">
 		select * from sys_config where status = 1 
 		<if test="key != null and key.trim() != ''">
 			and `key` like concat('%',#{key},'%') 
@@ -22,12 +22,12 @@
 		</if>
 	</select>
 	
-	<insert id="save" parameterType="com.wz.modules.oss.entity.SysConfigEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.oss.SysConfigEntity">
 		insert into sys_config(`key`, `value`, remark)
 			values(#{key},#{value},#{remark})
 	</insert>
 	
-	<update id="update" parameterType="com.wz.modules.oss.entity.SysConfigEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.oss.SysConfigEntity">
 		update sys_config set `key` = #{key}, `value` = #{value}, remark = #{remark} 
 			 where id = #{id}
 	</update>

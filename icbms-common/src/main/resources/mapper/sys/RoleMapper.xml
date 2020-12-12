@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.RoleDao">
+<mapper namespace="com.icbms.repository.dao.sys.RoleDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.RoleEntity" id="roleMap">
+    <resultMap type="com.icbms.repository.domain.sys.RoleEntity" id="roleMap">
         <result property="id" column="id"/>
         <result property="bapid" column="bapid"/>
         <result property="baid" column="baid"/>
@@ -32,13 +32,13 @@
 		create_id
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.RoleEntity" resultMap="roleMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.RoleEntity" resultMap="roleMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_role
 		where id = #{value}
 	</select>
-	<select id="queryByUserId" resultType="com.wz.modules.sys.entity.RoleEntity" resultMap="roleMap">
+	<select id="queryByUserId" resultType="com.icbms.repository.domain.sys.RoleEntity" resultMap="roleMap">
 		select
 		r.id,r.name,r.code,r.status
 		from sys_user_role ur
@@ -56,7 +56,7 @@
 	</select>
 
 	<!--根据角色id查询可用的组织机构-->
-	<select id="queryPageByDto" resultType="com.wz.modules.sys.entity.UserWindowDto" >
+	<select id="queryPageByDto" resultType="com.icbms.common.dto.UserWindowDto" >
 		select
 			id,name,bapid
 		from sys_role
@@ -65,7 +65,7 @@
 			AND name LIKE concat('%',#{name},'%')
 		</if>
 	</select>
-	<select id="queryList" resultType="com.wz.modules.sys.entity.RoleEntity" resultMap="roleMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.RoleEntity" resultMap="roleMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_role
@@ -86,7 +86,7 @@
 		select count(*) from sys_role
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.RoleEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.RoleEntity">
 		insert into sys_role
 		(
 			`id`, 
@@ -119,7 +119,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.RoleEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.RoleEntity">
 		update sys_role 
 		<set>
 			<if test="name != null">`name` = #{name}, </if>

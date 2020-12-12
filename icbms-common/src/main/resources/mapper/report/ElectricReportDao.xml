@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.report.dao.ElectricReportDao">
-	<select id="findElectricByDay" resultType="com.wz.modules.report.entity.ElectricReportEntity">
+<mapper namespace="com.icbms.repository.dao.report.ElectricReportDao">
+	<select id="findElectricByDay" resultType="com.icbms.repository.domain.report.ElectricReportEntity">
 		SELECT
 		a.project_id as projectId,
 		a.device_box_id as deviceBoxId,
@@ -68,7 +68,7 @@
 
 
 
-	<select id="doStatDailyElectricCnt" resultType="com.wz.modules.report.entity.ElectricDailyEntity">
+	<select id="doStatDailyElectricCnt" resultType="com.icbms.repository.domain.report.ElectricDailyEntity">
 		SELECT
 		a.project_id AS projectId,
 		DATE_FORMAT(a.create_time, '%Y-%m-%d') AS statDate,

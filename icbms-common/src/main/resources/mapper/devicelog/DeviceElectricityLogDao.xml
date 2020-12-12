@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.devicelog.dao.DeviceElectricityLogDao">
+<mapper namespace="com.icbms.repository.dao.devicelog.DeviceElectricityLogDao">
 
 
-	<resultMap type="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity"
+	<resultMap type="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity"
 		id="deviceElectricityLogMap">
 		<result property="id" column="id" />
 		<result property="projectId" column="project_id" />
@@ -34,7 +34,7 @@
 	</sql>
 
 	<select id="queryObject"
-		resultType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity"
 		resultMap="deviceElectricityLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -43,7 +43,7 @@
 	</select>
 
 	<select id="queryList"
-		resultType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity"
 		resultMap="deviceElectricityLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -62,7 +62,7 @@
 	</select>
 
 	<select id="queryListByBean"
-		resultType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity"
+		resultType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity"
 		resultMap="deviceElectricityLogMap">
 		select
 		<include refid="Base_Column_List" />
@@ -76,7 +76,7 @@
 	</select>
 
 	<insert id="save"
-		parameterType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity">
+		parameterType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity">
 		insert into device_electricity_log
 		(
 		`id`,
@@ -108,7 +108,7 @@
 	</insert>
 
 	<update id="update"
-		parameterType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity">
+		parameterType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity">
 		update device_electricity_log
 		<set>
 			<if test="projectId != null">`project_id` = #{projectId}, </if>
@@ -138,7 +138,7 @@
 	</delete>
 	
 	<select id="doStatDeviceElec"
-		resultType="com.wz.modules.devicelog.entity.DeviceElecStatEntity">
+		resultType="com.icbms.repository.domain.devicelog.DeviceElecStatEntity">
 		select stat_date as date,sum(electricity) as elec from
 		device_electricity_log 
 		where 1=1 
@@ -154,7 +154,7 @@
 	</select>
 	
 	<select id="doStatElectricCnt"
-		resultType="com.wz.modules.devicelog.entity.DeviceElectricityLogEntity">
+		resultType="com.icbms.repository.domain.devicelog.DeviceElectricityLogEntity">
 		SELECT 
 		    a.project_id AS projectId,
 		    a.device_box_id AS deviceBoxId,

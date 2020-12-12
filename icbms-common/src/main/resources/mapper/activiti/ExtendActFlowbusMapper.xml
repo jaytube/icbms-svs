@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActFlowbusDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActFlowbusDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActFlowbusEntity" id="extendActFlowbusMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActFlowbusEntity" id="extendActFlowbusMap">
         <result property="id" column="id"/>
         <result property="busId" column="bus_id"/>
         <result property="status" column="status"/>
@@ -30,7 +30,7 @@
 		table_name
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_flowbus
@@ -38,14 +38,14 @@
 	</select>
 
 	<!--根据业务id和流程实例id查询-->
-	<select id="queryByBusIdInsId" resultType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
+	<select id="queryByBusIdInsId" resultType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_flowbus
 		WHERE instance_id = #{instanceId} and bus_id = #{busId}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity" resultMap="extendActFlowbusMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_flowbus
@@ -62,7 +62,7 @@
 		select count(*) from extend_act_flowbus
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity">
 		insert into extend_act_flowbus
 		(
 			`id`, 
@@ -91,7 +91,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity">
 		update extend_act_flowbus 
 		<set>
 			<if test="busId != null">`bus_id` = #{busId}, </if>
@@ -107,7 +107,7 @@
 		where id = #{id}
 	</update>
 	<!--根据业务id更新-->
-	<update id="updateByBusId" parameterType="com.wz.modules.activiti.entity.ExtendActFlowbusEntity">
+	<update id="updateByBusId" parameterType="com.icbms.repository.domain.activity.ExtendActFlowbusEntity">
 		update extend_act_flowbus
 		<set>
 			<if test="busId != null">`bus_id` = #{busId}, </if>

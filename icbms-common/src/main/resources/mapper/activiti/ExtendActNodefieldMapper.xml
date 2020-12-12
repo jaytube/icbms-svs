@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.activiti.dao.ExtendActNodefieldDao">
+<mapper namespace="com.icbms.repository.dao.activity.ExtendActNodefieldDao">
 
 
-    <resultMap type="com.wz.modules.activiti.entity.ExtendActNodefieldEntity" id="extendActNodefieldMap">
+    <resultMap type="com.icbms.repository.domain.activity.ExtendActNodefieldEntity" id="extendActNodefieldMap">
         <result property="id" column="id"/>
         <result property="nodeId" column="node_id"/>
         <result property="fieldName" column="field_name"/>
@@ -24,7 +24,7 @@
 		el_operator
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.activiti.entity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.activity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodefield
@@ -32,7 +32,7 @@
 	</select>
 
 	<!--根据节点集合查询-->
-	<select id="queryByNodes" resultType="com.wz.modules.activiti.entity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
+	<select id="queryByNodes" resultType="com.icbms.repository.domain.activity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodefield
@@ -42,7 +42,7 @@
 		</foreach>
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.activiti.entity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.activity.ExtendActNodefieldEntity" resultMap="extendActNodefieldMap">
 		select
 		<include refid="Base_Column_List" />
 		from extend_act_nodefield
@@ -60,7 +60,7 @@
 		select count(*) from extend_act_nodefield
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.activiti.entity.ExtendActNodefieldEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.activity.ExtendActNodefieldEntity">
 		insert into extend_act_nodefield
 		(
 			`id`, 
@@ -83,7 +83,7 @@
 		)
 	</insert>
 
-	<insert id="saveBatch" parameterType="com.wz.modules.activiti.entity.ExtendActNodeuserEntity">
+	<insert id="saveBatch" parameterType="com.icbms.repository.domain.activity.ExtendActNodeuserEntity">
 		insert into extend_act_nodefield
 		(
 			`id`,
@@ -111,7 +111,7 @@
 
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.activiti.entity.ExtendActNodefieldEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.activity.ExtendActNodefieldEntity">
 		update extend_act_nodefield 
 		<set>
 			<if test="nodeId != null">`node_id` = #{nodeId}, </if>

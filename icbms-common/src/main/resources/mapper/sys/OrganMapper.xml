@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.sys.dao.OrganDao">
+<mapper namespace="com.icbms.repository.dao.sys.OrganDao">
 
 
-    <resultMap type="com.wz.modules.sys.entity.OrganEntity" id="organMap">
+    <resultMap type="com.icbms.repository.domain.sys.OrganEntity" id="organMap">
         <result property="id" column="id"/>
         <result property="bapid" column="bapid"/>
         <result property="type" column="type"/>
@@ -40,14 +40,14 @@
 		update_time
     </sql>
 
-	<select id="queryObject" resultType="com.wz.modules.sys.entity.OrganEntity" resultMap="organMap">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.OrganEntity" resultMap="organMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_organ
 		where id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.sys.entity.OrganEntity" resultMap="organMap">
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.OrganEntity" resultMap="organMap">
 		select
 		<include refid="Base_Column_List" />
 		from sys_organ
@@ -64,7 +64,7 @@
 		</if>
 	</select>
 	<!--查询组织审批选择范围-->
-	<select id="queryPageByDto" resultType="com.wz.modules.sys.entity.UserWindowDto" >
+	<select id="queryPageByDto" resultType="com.icbms.common.dto.UserWindowDto" >
 		select
 			id,name,bapid
 		from sys_organ
@@ -74,7 +74,7 @@
 		</if>
 	</select>
 
-	<select id="queryListByBean" resultType="com.wz.modules.sys.entity.OrganEntity" resultMap="organMap">
+	<select id="queryListByBean" resultType="com.icbms.repository.domain.sys.OrganEntity" resultMap="organMap">
 		select
 		<include refid="Base_Column_List" />,
 		(CASE WHEN type = '0'THEN '../plugins/ztree/css/zTreeStyle/img/diy/1_open.png'
@@ -97,7 +97,7 @@
 		select count(*) from sys_organ
 	</select>
 	 
-	<insert id="save" parameterType="com.wz.modules.sys.entity.OrganEntity">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.OrganEntity">
 		insert into sys_organ
 		(
 			`id`, 
@@ -136,7 +136,7 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="com.wz.modules.sys.entity.OrganEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.OrganEntity">
 		update sys_organ 
 		<set>
 			<if test="bapid != null">`bapid` = #{bapid}, </if>

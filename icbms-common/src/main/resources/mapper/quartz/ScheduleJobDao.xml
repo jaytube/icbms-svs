@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.wz.modules.quartz.dao.ScheduleJobDao">
-	<select id="queryObject" resultType="com.wz.modules.quartz.entity.ScheduleJobEntity" >
+<mapper namespace="com.icbms.repository.dao.sys.schedule.ScheduleJobDao">
+	<select id="queryObject" resultType="com.icbms.repository.domain.sys.schedule.ScheduleJobEntity" >
 		select * from schedule_job where job_id = #{value}
 	</select>
 
-	<select id="queryList" resultType="com.wz.modules.quartz.entity.ScheduleJobEntity" >
+	<select id="queryList" resultType="com.icbms.repository.domain.sys.schedule.ScheduleJobEntity" >
 		select * from schedule_job
 		<where>
 			<if test="beanName != null and beanName.trim() != ''">
@@ -27,7 +27,7 @@
 		</where>
 	</select>
 
-	<insert id="save" parameterType="com.wz.modules.quartz.entity.ScheduleJobEntity" useGeneratedKeys="true" keyProperty="jobId">
+	<insert id="save" parameterType="com.icbms.repository.domain.sys.schedule.ScheduleJobEntity" useGeneratedKeys="true" keyProperty="jobId">
 		insert into schedule_job
 		(
 			`bean_name`,
@@ -50,7 +50,7 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.wz.modules.quartz.entity.ScheduleJobEntity">
+	<update id="update" parameterType="com.icbms.repository.domain.sys.schedule.ScheduleJobEntity">
 		update schedule_job 
 		<set> 
 			<if test="beanName != null">`bean_name` = #{beanName}, </if>

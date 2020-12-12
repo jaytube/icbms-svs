@@ -21,7 +21,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
                 .select()  // 选择那些路径和api会生成document
-				.apis(RequestHandlerSelectors.basePackage("com.wz.modules.app")) // 对该包下的api进行监控
+				.apis(RequestHandlerSelectors.basePackage("com.icbms.web")) // 对该包下的api进行监控
                 .paths(PathSelectors.any()) // 对该包下的所有路径进行监控
                 .build();
     }
