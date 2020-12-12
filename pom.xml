@@ -82,12 +82,14 @@
 
     <dependencies>
         <!--dev tools-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
+<!--        fix: 修复:定时任务 quartz中出现相同类型的对象无法转换问题（java.lang.ClassCastException）-->
+<!--       https://blog.csdn.net/sinat_33155679/article/details/81486076 -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
