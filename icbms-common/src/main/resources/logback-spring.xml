@@ -37,10 +37,10 @@
     <logger name="org.springboot.sample" level="TRACE" />
 
     <!-- 开发、测试环境 -->
-    <springProfile name="dev,test">
+    <springProfile name="dev,test,local">
         <logger name="org.springframework.web" level="ERROR"/>
         <logger name="org.springboot.sample" level="ERROR" />
-        <logger name="com.icbms" level="INFO" />
+        <logger name="com.icbms" level="TRACE" />
     </springProfile>
 
     <!-- 生产环境 -->

@@ -13,11 +13,6 @@ spring:
   profiles:
     active: local #部署生产换成pro,开发local,连接icbms_pro2020数据库(从pro复制过来的)
 
-  http:
-    multipart:
-      max-file-size: 100MB
-      max-request-size: 100MB
-      enabled: true
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
@@ -42,7 +37,3 @@ jwt:
   # token有效时长，7天，单位秒
   expire: 604800
   header: token
-
-security:
-  basic:
-    enabled: false
